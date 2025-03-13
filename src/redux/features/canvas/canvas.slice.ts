@@ -6,7 +6,7 @@ interface CanvasState {
 }
 
 const initialState: CanvasState = {
-  activeTool: "line",
+  activeTool: "select",
 };
 
 const canvasSlice = createSlice({
@@ -17,7 +17,7 @@ const canvasSlice = createSlice({
       state.activeTool = action.payload;
     },
     resetActiveTool: (state) => {
-      state.activeTool = "line";
+      state.activeTool = "select";
     },
   },
 });

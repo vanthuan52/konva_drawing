@@ -10,19 +10,25 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-1/6 bg-gray-800 text-white p-4 flex flex-col gap-4">
-      <h2 className="text-lg font-bold">Tools</h2>
+    <div className="sidebar">
+      <h2 className="sidebar-title">Tools</h2>
       <button
-        className="p-2 bg-gray-700 rounded cursor-pointer"
-        onClick={() => setActiveTool("line")}
+        className="sidebar-button"
+        onClick={() => setActiveTool("pencil")}
       >
+        Free drawing
+      </button>
+      <button className="sidebar-button" onClick={() => setActiveTool("line")}>
         Draw Line
       </button>
-      <button
-        className="p-2 bg-gray-700 rounded cursor-pointer"
-        onClick={() => setActiveTool("rect")}
-      >
+      <button className="sidebar-button" onClick={() => setActiveTool("rect")}>
         Draw Rect
+      </button>
+      <button
+        className="sidebar-button"
+        onClick={() => setActiveTool("eraser")}
+      >
+        Eraser
       </button>
     </div>
   );
