@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface BoardLayoutContextProps {
   sidebarWidth: number;
@@ -7,9 +7,9 @@ interface BoardLayoutContextProps {
   boardHeight: number;
 }
 
-export const BoardLayoutContext = createContext<
-  BoardLayoutContextProps | undefined
->(undefined);
+const BoardLayoutContext = createContext<BoardLayoutContextProps | undefined>(
+  undefined
+);
 
 export const BoardLayoutProvider = ({
   children,
@@ -39,4 +39,12 @@ export const BoardLayoutProvider = ({
       {children}
     </BoardLayoutContext.Provider>
   );
+};
+
+export const useBoardLayout = () => {
+  const context = useContext(BoardLayoutContext);
+  if (!context) {
+    throw new Error("useBoardLayout must be used within a BoardLayoutProvider");
+  }
+  return context;
 };

@@ -1,5 +1,5 @@
 import "./Sidebar.scss";
-import { ApplicationTool } from "@/types/application";
+import { ApplicationTool } from "@/types/tool";
 import { useAppDispatch } from "@/redux/store";
 import { canvasActions } from "@/redux/features/canvas/canvas.slice";
 
@@ -26,9 +26,27 @@ const Sidebar = () => {
       </button>
       <button
         className="sidebar-button"
+        onClick={() => setActiveTool("circle")}
+      >
+        Draw Circle
+      </button>
+      <button
+        className="sidebar-button"
+        onClick={() => setActiveTool("ellipse")}
+      >
+        Draw Ellipse
+      </button>
+      <button
+        className="sidebar-button"
         onClick={() => setActiveTool("eraser")}
       >
         Eraser
+      </button>
+      <button
+        className="sidebar-button"
+        onClick={() => setActiveTool("select")}
+      >
+        Select
       </button>
     </div>
   );
