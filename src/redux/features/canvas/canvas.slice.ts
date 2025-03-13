@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ApplicationTool } from "@/types/application";
+import { ApplicationTool } from "@/types/tool";
 
 interface CanvasState {
   activeTool: ApplicationTool;

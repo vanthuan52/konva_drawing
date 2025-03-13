@@ -1,10 +1,11 @@
 import React from "react";
-import { Layer, Line, Stage } from "react-konva";
+import { Stage } from "react-konva";
 import "./KonvaBoard.scss";
 import { RootState, useAppSelector } from "@/redux/store";
 import { useKonvaStage } from "@/hooks/useKonvaStage";
-import { useFreeDrawing } from "@/hooks/useFreeDrawing";
-import { useBoardLayout } from "@/hooks/useBoardLayout";
+import { useBoardLayout } from "@/contexts/BoardLayoutContext";
+import ShapeLayer from "@/components/ShapeLayer/ShapeLayer";
+import { useCanvasTools } from "@/hooks/useCanvasTools";
 
 const KonvaBoard: React.FC = () => {
   const activeTool = useAppSelector(
@@ -14,8 +15,15 @@ const KonvaBoard: React.FC = () => {
   const { stageRef } = useKonvaStage({});
   const { boardWidth, boardHeight } = useBoardLayout();
 
-  const { lines, handleMouseDown, handleMouseMove, handleMouseUp } =
-    useFreeDrawing({ activeTool });
+  const {
+    lines,
+    rectangles,
+    circles,
+    ellipses,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+  } = useCanvasTools({ activeTool });
 
   return (
     <div className="board">
@@ -24,21 +32,16 @@ const KonvaBoard: React.FC = () => {
         width={boardWidth}
         height={boardHeight}
         style={{ border: "1px solid red" }}
-        onMouseDown={(e) => {
-          handleMouseDown(e);
-        }}
-        onMouseMove={(e) => {
-          handleMouseMove(e);
-        }}
-        onMouseUp={(e) => {
-          handleMouseUp();
-        }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
       >
-        <Layer>
-          {lines.map((line, i) => (
-            <Line key={i} {...line} />
-          ))}
-        </Layer>
+        <ShapeLayer
+          lines={lines}
+          rectangles={rectangles}
+          circles={circles}
+          ellipses={ellipses}
+        />
       </Stage>
     </div>
   );

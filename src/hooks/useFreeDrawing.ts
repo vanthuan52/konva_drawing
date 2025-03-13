@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
+import { KonvaEventObject } from "konva/lib/Node";
 import { LineConfig } from "konva/lib/shapes/Line";
-import { ApplicationTool } from "@/types/application";
+import { ApplicationTool } from "@/types/tool";
 
 interface UseFreeDrawing {
   activeTool: ApplicationTool;
@@ -13,11 +14,11 @@ export const useFreeDrawing = ({ activeTool }: UseFreeDrawing) => {
   const [isDrawing, setIsDrawing] = useState(false);
 
   const handleMouseDown = useCallback(
-    (e: any) => {
+    (e: KonvaEventObject<MouseEvent>) => {
       if (!allowedActions.includes(activeTool)) return;
       setIsDrawing(true);
 
-      const { x, y } = e.target.getStage().getPointerPosition();
+      const { x, y } = e.target.getStage()!.getPointerPosition()!;
       setLines((prev) => [
         ...prev,
         {
@@ -35,9 +36,9 @@ export const useFreeDrawing = ({ activeTool }: UseFreeDrawing) => {
   );
 
   const handleMouseMove = useCallback(
-    (e: any) => {
+    (e: KonvaEventObject<MouseEvent>) => {
       if (!allowedActions.includes(activeTool) || !isDrawing) return;
-      const { x, y } = e.target.getStage().getPointerPosition();
+      const { x, y } = e.target.getStage()!.getPointerPosition()!;
 
       setLines((prevLines) => {
         if (prevLines.length === 0) return prevLines;
@@ -56,7 +57,7 @@ export const useFreeDrawing = ({ activeTool }: UseFreeDrawing) => {
     [activeTool, isDrawing]
   );
 
-  const handleMouseUp = useCallback(() => {
+  const handleMouseUp = useCallback((e: KonvaEventObject<MouseEvent>) => {
     setIsDrawing(false);
   }, []);
 
