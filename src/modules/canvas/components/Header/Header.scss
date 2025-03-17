@@ -1,0 +1,36 @@
+@use "@/styles/variables" as vars;
+
+.header {
+  height: vars.$drawing-header-height;
+  background: #ffffff;
+  color: #000000;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-information {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+
+  &-logo {
+    font-size: vars.$font-size-xxl;
+    font-weight: 600;
+  }
+
+  &-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}

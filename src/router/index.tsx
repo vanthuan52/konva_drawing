@@ -1,7 +1,7 @@
-import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "@/pages/home/home";
-import DrawingLayout from "@/layouts/DrawingLayout/DrawingLayout";
+import BoardPage from "@/modules/canvas/pages/BoardPage/BoardPage";
+import NotFound from "@/pages/NotFound/NotFound";
+import HomePage from "@/pages/HomePage/HomePage";
 
 const ROUTER_PATH = {
   home: "/",
@@ -12,12 +12,15 @@ const ROUTER_PATH = {
 
 export const router = createBrowserRouter([
   {
-    element: <DrawingLayout />,
-    children: [
-      {
-        path: ROUTER_PATH.home,
-        element: <Home />,
-      },
-    ],
+    path: ROUTER_PATH.home,
+    element: <HomePage />,
+  },
+  {
+    path: ROUTER_PATH.board,
+    element: <BoardPage />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
