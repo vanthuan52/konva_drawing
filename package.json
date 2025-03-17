@@ -12,7 +12,10 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
     "@tailwindcss/vite": "^4.0.11",
+    "clsx": "^2.1.1",
+    "dxf-parser": "^1.1.2",
     "konva": "^9.3.18",
+    "lucide-react": "^0.479.0",
     "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
-import { authReducer, canvasReducer } from "./features";
+import authReducer from "@/modules/auth/authSlice";
+import canvasReducer from "@/modules/canvas/canvasSlice";
 
 export const store = configureStore({
   reducer: {

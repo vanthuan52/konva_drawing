@@ -1,0 +1,35 @@
+@use "@/styles/variables" as vars;
+
+.sidebar {
+  left: 0;
+  top: 0;
+  width: vars.$sidebar-width;
+  min-width: vars.$sidebar-width;
+  //box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #fff;
+  padding-top: 10px;
+
+  &-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+
+  &-button {
+    padding: 0.5rem;
+    background-color: #4a5568;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: #5a67d8;
+    }
+  }
+}

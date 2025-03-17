@@ -1,0 +1,28 @@
+.container {
+  text-align: center;
+  margin-top: 10%;
+
+  h1 {
+    font-size: 5rem;
+    color: #ff4f4f;
+  }
+
+  p {
+    font-size: 1.5rem;
+    color: #666;
+  }
+
+  .home-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+
+    &:hover {
+      background: #0056b3;
+    }
+  }
+}

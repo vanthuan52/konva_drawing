@@ -1,0 +1,12 @@
+@use "@/styles/variables" as vars;
+
+.board {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &-canvas {
+    background: #f3f3f3;
+    height: calc(100vh - vars.$drawing-header-height - 2px);
+  }
+}
